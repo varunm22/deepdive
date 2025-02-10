@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face on Pool</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 800px;  /* Same width as the pool image */
+            height: 600px; /* Same height as the pool image */
+        }
+
+        #pool {
+            width: 100%;  /* Takes up full width of container */
+            height: 100%; /* Takes up full height of container */
+        }
+
+        #face {
+            position: absolute;
+            top: 33%;      /* Move the face higher (was 50%) */
+            right: 18%;      /* Keep on the right side of the pool */
+            transform: translateY(-50%); /* Ensure vertical centering in the new position */
+            width: 100px;  /* Size of the face image */
+            height: 100px; /* Size of the face image */
+            border-radius: 50%; /* Circular face */
+            animation: bounce 2s ease-in-out 3, arcMovement 4s 6s forwards;
+        }
+
+        #text {
+            position: absolute;
+            top: 30%;      /* Position it vertically in the center */
+            left: 50%;     /* Position it horizontally in the center */
+            transform: translate(-50%, -50%); /* Center the text perfectly */
+            font-size: 150px; /* Large font size */
+            font-weight: bold;
+            color: white;
+            opacity: 0;  /* Initially hidden */
+            animation: fadeIn 2s 10s forwards;  /* Fade in after 10 seconds */
+        }
+
+
+        @keyframes bounce {
+            0%, 100% {
+                top: 33%;
+            }
+            50% {
+                top: 20%; /* Bounce up */
+            }
+        }
+
+
+        @keyframes arcMovement {
+            0% {
+                transform: translateX(0) translateY(-50%);
+            }
+            50% {
+                transform: translateX(-200px) translateY(-150px); /* Move up and to the left */
+            }
+            100% {
+                transform: translateX(-300px) translateY(280px); /* Curve down to final position */
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0; /* Start invisible */
+            }
+            100% {
+                opacity: 1; /* Fade to visible */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Pool background image -->
+        <img id="pool" src="pool-background.jpg" alt="Pool Background">
+        <!-- Face image with animations -->
+        <img id="face" src="deep.png" alt="Face">
+        <div id="text">DEEP DIVE</div>
+    </div>
+</body>
+</html>
